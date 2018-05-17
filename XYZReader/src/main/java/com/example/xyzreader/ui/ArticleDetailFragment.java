@@ -200,6 +200,7 @@ public class ArticleDetailFragment extends Fragment implements
         }
 
         CollapsingToolbarLayout toolbar = mRootView.findViewById(R.id.photo_container);
+        toolbar.setCollapsedTitleTextColor(getResources().getColor(R.color.ltgray));
         //TextView titleView = (TextView) mRootView.findViewById(R.id.article_title);
         TextView bylineView = (TextView) mRootView.findViewById(R.id.article_byline);
         bylineView.setMovementMethod(new LinkMovementMethod());
