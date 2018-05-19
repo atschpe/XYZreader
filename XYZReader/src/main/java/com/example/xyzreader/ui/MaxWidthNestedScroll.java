@@ -18,38 +18,39 @@ package com.example.xyzreader.ui;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.support.v4.widget.NestedScrollView;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
 /**
  * A simple {@link LinearLayout} subclass that has a maxWidth
  */
-public class MaxWidthLinearLayout extends LinearLayout {
+public class MaxWidthNestedScroll extends NestedScrollView {
     private static final int[] ATTRS = {
             android.R.attr.maxWidth
     };
 
     private int mMaxWidth = Integer.MAX_VALUE;
 
-    public MaxWidthLinearLayout(Context context) {
+    public MaxWidthNestedScroll(Context context) {
         super(context);
         init(context, null, 0, 0);
     }
 
-    public MaxWidthLinearLayout(Context context, AttributeSet attrs) {
+    public MaxWidthNestedScroll(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context, attrs, 0, 0);
     }
 
-    public MaxWidthLinearLayout(Context context, AttributeSet attrs, int defStyle) {
+    public MaxWidthNestedScroll(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         init(context, attrs, defStyle, 0);
     }
 
-    public MaxWidthLinearLayout(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
-        init(context, attrs, defStyleAttr, defStyleRes);
-    }
+//    public MaxWidthNestedScroll(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+//        super(context, attrs, defStyleAttr, defStyleRes);
+//        init(context, attrs, defStyleAttr, defStyleRes);
+//    }
 
     public void init(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         TypedArray a = context.obtainStyledAttributes(attrs, ATTRS);
@@ -62,5 +63,7 @@ public class MaxWidthLinearLayout extends LinearLayout {
         int newSpecWidth = Math.min(MeasureSpec.getSize(widthMeasureSpec), mMaxWidth);
         widthMeasureSpec = MeasureSpec.makeMeasureSpec(newSpecWidth, MeasureSpec.getMode(widthMeasureSpec));
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+
     }
+
 }

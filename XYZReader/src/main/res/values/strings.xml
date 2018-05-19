@@ -8,5 +8,7 @@
     <string name="action_share">Share</string>
 
     <string name="up">Up</string>
+    <string name="scroll_up">scroll up</string>
+    <string name="shared_image">shared image</string>
 
 </resources>
