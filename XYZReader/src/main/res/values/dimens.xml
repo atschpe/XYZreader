@@ -10,5 +10,8 @@
 
     <dimen name="std_pad">16dp</dimen>
     <dimen name="half_pad">8dp</dimen>
+    <dimen name="app_elevation">4dp</dimen>
+    <dimen name="fab_size">56dp</dimen>
+    <dimen name="std_qtr">4dp</dimen>
 
 </resources>
