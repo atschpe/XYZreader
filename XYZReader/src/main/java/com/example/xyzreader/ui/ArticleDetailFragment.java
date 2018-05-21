@@ -7,7 +7,6 @@ import android.content.Loader;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -27,6 +26,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 import com.example.xyzreader.R;
 import com.example.xyzreader.data.ArticleLoader;
+import com.ms.square.android.expandabletextview.ExpandableTextView;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -184,10 +184,7 @@ public class ArticleDetailFragment extends Fragment implements
         toolbar.setCollapsedTitleTextColor(getResources().getColor(android.R.color.white));
         TextView bylineView = mRootView.findViewById(R.id.article_byline);
         bylineView.setMovementMethod(new LinkMovementMethod());
-        TextView bodyView = mRootView.findViewById(R.id.article_body);
-
-
-        bodyView.setTypeface(Typeface.createFromAsset(getResources().getAssets(), "Rosario-Regular.ttf"));
+        ExpandableTextView bodyView = mRootView.findViewById(R.id.article_body);
 
         if (mCursor != null) {
             mRootView.setAlpha(0);
@@ -204,34 +201,33 @@ public class ArticleDetailFragment extends Fragment implements
                                 + " by <font color='#000000'>"
                                 + mCursor.getString(ArticleLoader.Query.AUTHOR)
                                 + "</font>"));
-
             } else {
                 // If date is before 1902, just show the string
                 bylineView.setText(Html.fromHtml(
                         outputFormat.format(publishedDate) + " by <font color='#000000'>"
                                 + mCursor.getString(ArticleLoader.Query.AUTHOR)
                                 + "</font>"));
-
             }
-            bodyView.setText(Html.fromHtml(mCursor.getString(ArticleLoader.Query.BODY)
-                    .replaceAll("(\r\n|\n)", "<br />")));
+
+            bodyView.setText((mCursor.getString(ArticleLoader.Query.BODY)
+                    .replace("\r\n", "\n")));
             ImageLoaderHelper.getInstance(getActivity()).getImageLoader().get(mCursor
                     .getString(ArticleLoader.Query.PHOTO_URL), new ImageLoader.ImageListener() {
-                        @Override
-                        public void onResponse(ImageLoader.ImageContainer imageContainer, boolean b) {
-                            Bitmap bitmap = imageContainer.getBitmap();
-                            if (bitmap != null) {
-                                Palette p = Palette.generate(bitmap, 12);
-                                mPhotoView.setImageBitmap(imageContainer.getBitmap());
-                                updateStatusBar();
-                            }
-                        }
+                @Override
+                public void onResponse(ImageLoader.ImageContainer imageContainer, boolean b) {
+                    Bitmap bitmap = imageContainer.getBitmap();
+                    if (bitmap != null) {
+                        Palette p = Palette.generate(bitmap, 12);
+                        mPhotoView.setImageBitmap(imageContainer.getBitmap());
+                        updateStatusBar();
+                    }
+                }
 
-                        @Override
-                        public void onErrorResponse(VolleyError volleyError) {
+                @Override
+                public void onErrorResponse(VolleyError volleyError) {
 
-                        }
-                    });
+                }
+            });
         } else {
             mRootView.setVisibility(View.GONE);
             toolbar.setTitle("N/A");
@@ -260,7 +256,6 @@ public class ArticleDetailFragment extends Fragment implements
             mCursor.close();
             mCursor = null;
         }
-
         bindViews();
     }
 

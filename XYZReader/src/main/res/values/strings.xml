@@ -10,5 +10,8 @@
     <string name="up">Up</string>
     <string name="scroll_up">scroll up</string>
     <string name="shared_image">shared image</string>
+    <string name="read_more">read more</string>
+    <string name="read_less_bt">read less</string>
+    <string name="expand_and_collapse_text">expand and collapse text</string>
 
 </resources>
