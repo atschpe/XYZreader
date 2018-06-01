@@ -1,3 +1,3 @@
-= XYZ Reader Starter Code
+# XYZ Reader Starter Code
 
-This repository stores the starter code for the XYZ Reader project in Udacity's Android Nanodegree.
+This simple RSS-reader implements material-design standards, offering a crisp and easy to use and understand design. Next to the standard use of colors, margins and sizes, it also uses a parallax action bar and ensures quick loading for longer texts.
