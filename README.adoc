@@ -1,3 +1,3 @@
-# XYZ Reader Starter Code
+# XYZ Reader 
 
-This simple RSS-reader implements material-design standards, offering a crisp and easy to use and understand design. Next to the standard use of colors, margins and sizes, it also uses a parallax action bar and ensures quick loading for longer texts.
+Based on the Udacity starter Code this project aimed at reworking a simple RSS_reader implementing material-design standards, offering a crisp and easy to use and understand design. The focus hearby lay on reworking colour and the flow from one UI to the next. Additionally, it also ensures that loading times are kept to a minimal, but inviting the user to hit "Read more" rather than loading long texts entirely from the get go.
